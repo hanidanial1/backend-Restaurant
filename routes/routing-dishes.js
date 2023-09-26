@@ -1,5 +1,5 @@
 const { addMeal , gettingAddedMeals,deletingAddedMeal, updatingMonut } = require('../controller/addedToCartController.js')
-const { createClient, loginUser } = require('../controller/clientControllerNODEJS.js')
+const { createClient, loginUser } = require('../controller/clientController.js')
 const { gettingDishes, add, updating, deleting, getById } = require('../controller/control.dishes')
 const jwtAuth = require('../middlewares/jwtAuth.js')
 const upload = require('../middlewares/upload')
