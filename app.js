@@ -2,8 +2,8 @@ const express = require('express');
 const serverless = require('serverless-http')
  require('dotenv').config();
 const cors = require('cors');
-const db = require('../mongoose');
-const router = require('../routes/routing-dishes');
+const db = require('./mongoose');
+const router = require('./routes/routing-dishes');
 const app = express();
 const port =  process.env.PORT || 3000
 
@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 db()
 
-app.use('/.netlify/functions/api', router)
+app.use('/menu', router)
 app.get('/uploads/:picId', (req, res) => {
     const picId = req.params.picId;
     const imgPath = path.join(__dirname, 'uploads', picId);
@@ -26,4 +26,3 @@ app.get('/uploads/:picId', (req, res) => {
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
 });
-module.exports.handler = serverless(app)
