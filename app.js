@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 db()
 
-app.use('/menu', router)
+app.use('/', router)
 app.get('/uploads/:picId', (req, res) => {
     const picId = req.params.picId;
     const imgPath = path.join(__dirname, 'uploads', picId);
