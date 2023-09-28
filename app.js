@@ -11,7 +11,7 @@ const path = require('path');
 
 
 const corsOptions = {
-    origin: 'https://your-frontend-domain.com', // Replace with your actual frontend domain
+    origin: 'https://frontendsinglepage.netlify.app/', // Replace with your actual frontend domain
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     optionsSuccessStatus: 204,
   };
