@@ -11,8 +11,7 @@ const path = require('path');
 
 
 const corsOptions = {
-    origin: 'https://frontendsinglepage.netlify.app/',
-    origin: 'https://frontendsinglepage.netlify.app/login'
+    origin: ['https://frontendsinglepage.netlify.app/', 'https://frontendsinglepage.netlify.app/login'],
     // Add other CORS options if needed
   };
   
