@@ -10,13 +10,9 @@ const port =  process.env.PORT || 3000
 const path = require('path');
 
 
-const corsOptions = {
-    origin: 'https://frontendsinglepage.netlify.app/', // Replace with your actual frontend domain
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    optionsSuccessStatus: 204,
-  };
+
   
-  app.use(cors(corsOptions));
+  app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
