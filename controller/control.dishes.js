@@ -1,9 +1,25 @@
 const Dishes = require('../DB.models/dishes')
-async function add(req, res) {
 
+const cloudinary = require('cloudinary').v2;
+
+cloudinary.config({ 
+    cloud_name: process.env.CLOUD_NAME, 
+    api_key: process.env.API_KEY, 
+    api_secret: process.env.API_SECRET 
+  });
+  
+  
+
+
+async function add(req, res) {
+    let img ;
+    if(req.file !== undefined){
+        data = await cloudinary.uploader.upload(req.file.path)
+        img = data.secure_url;
+      }
     const { name, description, price } = req.body;
     const dishes = {
-        img: `http://127.0.0.1:4000/${req.file.path}`,
+        img: img,
         name,
         description,
         price,
@@ -19,7 +35,7 @@ async function add(req, res) {
         
         res.send(result);
     } catch (error) {
-        res.status(400).send(error.details[0].message);
+        res.status(400).send(error);
     }
 }
 

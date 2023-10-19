@@ -1,6 +1,14 @@
 const AddedMeal = require('../DB.models/addedToCart')
+const cloudinary = require('cloudinary').v2;
+
+cloudinary.config({ 
+  cloud_name: process.env.CLOUD_NAME, 
+  api_key: process.env.API_KEY, 
+  api_secret: process.env.API_SECRET 
+});
+
 async function addMeal(req, res) {
-  console.log(req.body);
+
   const { img:img, name, description, price, status, quantity } = req.body;
   const addedMeal = {
     img: img,
@@ -10,7 +18,7 @@ async function addMeal(req, res) {
     status,
     quantity,
   };
-  console.log(addedMeal);
+
 if(!addedMeal){
     throw new Error('please dont send fucking shits')
 }

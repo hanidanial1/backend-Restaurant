@@ -1,5 +1,4 @@
 const express = require('express');
-
  require('dotenv').config();
 const cors = require('cors');
 const db = require('./mongoose');
@@ -9,10 +8,8 @@ const port =  process.env.PORT || 3000
 
 const path = require('path');
 
-
-
   
-  app.use(cors());
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -20,9 +17,11 @@ db()
 
 app.use('/', router)
 app.get('/uploads/:picId', (req, res) => {
+    console.log("first")
     const picId = req.params.picId;
     const imgPath = path.join(__dirname, 'uploads', picId);
     res.sendFile(imgPath);
+    console.log(imgPath)
 });
 
 
